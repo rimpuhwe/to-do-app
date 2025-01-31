@@ -40,7 +40,7 @@ h2{
 }
 svg{
     display: inline;
-    font-weight: lighter;
+    stroke-width: 1;
 }
 #add-task-board{
     display:none;
