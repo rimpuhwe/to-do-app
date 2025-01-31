@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="main-board">
+        <div class="task-container">
+            <h2>Daily Tasks</h2>
+            <div id="daily-board"></div>
+        </div>
+        <div class="task-container">
+            <h2>To do Tasks</h2>
+            <div id="to-do"></div>
+        </div>
+        <div id="button-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="40" height="40" fill="#fff">
+                <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H48c-17.7
+                0-32 14.3-32 32s14.3 32 32 32H192V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H400c17.7
+                0 32-14.3 32-32s-14.3-32-32-32H256V80z"/>
+            </svg>
+        </div>
+    </div>
+    <script>
+        const mainBoard = document.getElementById("main-board");
+        const PlusIcon = document.querySelector('svg');
+        const taskToDo = document.getElementById('to-do');
+
+        //creating the aading task form
+        const addBoard = document.createElement('div');
+        addBoard.id = 'add-task-board';
+        document.body.appendChild(addBoard);
+        
+        addBoard.innerHTML = `
+        <h2>Add new</h2>
+        <form>
+            <input type="text" id="task" placeholder="Task" required>
+            <input type="date" id="date" placeholder="Date" required>
+            <input type="text" id="emoji" placeholder="Emoji 🐼" required>
+        </form>
+        <div id='add-button'>
+            <button id="add-task">📝Create Task</button>
+        </div>
+        `;
+        
+        const taskInput = document.getElementById('task');
+        const dateInput = document.getElementById('date');
+        const emojiInput = document.getElementById('emoji');
+        const addButton = document.getElementById('add-task');
+        
+        PlusIcon.addEventListener('click', () => {
+            mainBoard.style.display = 'none';
+            addBoard.style.display = 'block';
+        });
+
+        // function for adding task
+        function addTask() {
+            if (taskInput.value && dateInput.value && emojiInput.value) {
+                taskToDo.innerHTML += `
+                <div>
+                    <input type="radio" />
+                    <span>
+                        <span>${emojiInput.value}</span>
+                        <span>${taskInput.value}</span>
+                    </span>
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         style="fill: red;transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2
+                         2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
+                         </path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
+                        </svg>
+                    </span>
+                </div>
+                `;
+                
+                taskInput.value = '';
+                dateInput.value = '';
+                emojiInput.value = '';
+
+                addBoard.style.display = 'none';
+                mainBoard.style.display = 'block';
+            } else {
+                alert('Please fill all fields!');
+            }
+        }
+        
+        // adding click event to the create task button
+        addButton.addEventListener('click', addTask);
+        
+        // // saving data on the local storage
+        // function saveTask() {
+        //     localStorage.setItem('data', taskToDo.innerHTML);
+        // }
+
+        // function showTask() {
+        //     taskToDo.innerHTML = localStorage.getItem('data');
+        // }
+
+        // showTask();
+    </script>
+</body>
+</html>
