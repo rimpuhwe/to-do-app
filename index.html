@@ -61,13 +61,13 @@
             if (taskInput.value && dateInput.value && emojiInput.value) {
                 taskToDo.innerHTML += `
                 <div class="task-item">
-                    <input type="radio" />
+                    <input name="task" type="radio" />
                     <div class="task-content">
                         <span>${emojiInput.value}</span>
                         <span>${taskInput.value}</span>
                     </div>
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    <span onclick="deleteTask(this)">
+                        <svg class="delete" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          style="fill: red ;transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2
                          2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z">
                          </path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path>
@@ -85,6 +85,11 @@
             } else {
                 alert('Please fill all fields!');
             }
+        }
+        //a delete function to delete one of the task
+        function deleteTask(span){
+            const row = span.parentElement;
+            taskToDo.removeChild(row);
         }
         
         // adding click event to the create task button
