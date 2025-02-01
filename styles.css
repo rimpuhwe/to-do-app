@@ -46,6 +46,19 @@ svg{
     display:none;
     margin:50px auto
 }
+.task-item{
+    border:1px solid transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius:15px;
+    display: flex;
+    background: #1f1f1f;
+}
+.task-content{
+    width:60%;
+    display: flex;
+    gap:20px;
+}
 input{
     display:block;
     margin-bottom: 12px;
@@ -60,7 +73,12 @@ input{
 }
 input[type="radio"]{
     width:unset;
-    display: inline-block;;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.5);
+    margin: 2px 20px 2px 5px;
 }
 span{
     font-size: 20px;
@@ -78,6 +96,7 @@ button{
     font-weight: 700;
     text-align: center;
 }
+
 @media screen and (max-width:767px){
     #main-board,#add-task-board{
         width:90%;
