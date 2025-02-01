@@ -35,6 +35,14 @@
         document.body.appendChild(addBoard);
         
         addBoard.innerHTML = `
+        <div id="close-icon">
+            <svg class="close" xmlns="http://www.w3.org/2000/svg" width=50" height="50" viewBox="0 0 24 24"
+               style="fill:#5804a8;transform: ;msFilter:;"><path d="m16.192
+               6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242
+               1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z">
+               < /path>
+            </svg>
+        </div>
         <h2>Add new</h2>
         <form>
             <input type="text" id="task" placeholder="Task" required>
@@ -50,7 +58,14 @@
         const dateInput = document.getElementById('date');
         const emojiInput = document.getElementById('emoji');
         const addButton = document.getElementById('add-task');
-        
+        const closeIcon  = document.querySelector('.close');
+
+        //closing the tab
+        closeIcon.addEventListener('click',()=>{
+            mainBoard.style.display = 'block';
+            addBoard.style.display = 'none';
+        });
+        //open up the add-task-board
         PlusIcon.addEventListener('click', () => {
             mainBoard.style.display = 'none';
             addBoard.style.display = 'block';
@@ -91,7 +106,6 @@
             const row = span.parentElement;
             taskToDo.removeChild(row);
         }
-        
         // adding click event to the create task button
         addButton.addEventListener('click', addTask);
     </script>
