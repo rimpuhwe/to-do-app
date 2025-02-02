@@ -79,7 +79,7 @@ input{
     color:aliceblue;
     font-size: 18px;
 }
-input[type="radio"]{
+input[type="radio"], input[type="checkbox"]{
     width:unset;
     display: inline-block;
     display: flex;
