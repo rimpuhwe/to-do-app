@@ -10,7 +10,6 @@ body{
     color:#fff;
 }
 #main-board,#add-task-board{
-    border:1px solid green;
     width:40%;
     padding:20px;
     margin:20px auto;
@@ -18,10 +17,16 @@ body{
     flex-direction: column;
     justify-content: space-between;
     gap:10px;
+    border:1px solid#1f1f1f;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgb(41, 41, 41),
+                -5px -5px 2px rgb(41, 41, 41);
     
 }
+#main-board h2{
+    text-decoration: underline;
+}
 .task-container{
-    border:1px solid red;
     padding:10px 0;
 }
 h2{
@@ -39,12 +44,28 @@ h2{
     padding: 10px;
 }
 svg{
-    display: inline;
-    font-weight: lighter;
+    stroke-width: 1;
 }
 #add-task-board{
     display:none;
-    margin:50px auto
+    margin:50px auto;
+}
+#close-icon{
+    width:fit-content;
+    margin: 0 0 50px;
+}
+.task-item{
+    border:1px solid transparent;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius:15px;
+    display: flex;
+    background: #1f1f1f;
+}
+.task-content{
+    width:60%;
+    display: flex;
+    gap:20px;
 }
 input{
     display:block;
@@ -58,9 +79,14 @@ input{
     color:aliceblue;
     font-size: 18px;
 }
-input[type="radio"]{
+input[type="radio"], input[type="checkbox"]{
     width:unset;
-    display: inline-block;;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1.5);
+    margin: 2px 20px 2px 5px;
 }
 span{
     font-size: 20px;
@@ -78,9 +104,11 @@ button{
     font-weight: 700;
     text-align: center;
 }
+
 @media screen and (max-width:767px){
     #main-board,#add-task-board{
         width:90%;
+        margin:10px auto;
     }
     input{
         width:100%;
